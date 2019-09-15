@@ -1,0 +1,71 @@
+{{extend './layout/home.html'}}
+
+{{block 'title'}}{{'课程'}}{{/block}}
+
+{{block 'content'}}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li id="sidebar-students"><a href="/students">学生名单</a></li>
+            <li id="sidebar-courses" class="active"><a href="/courses">课程名单</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">课程信息</h1>
+          <form class="form-inline">
+            {{ if user }}
+            <div>
+              <a class="btn btn-success" style="margin-left: 20px" href="/students/new">添加课程</a>  
+              <div class="input-group" style="margin-left: 700px">
+                <input type="text" class="form-control"  placeholder="课程名称">
+                <span class="input-group-addon">搜索</span>
+              </div>
+            </div>
+            {{ /if }}
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>名称</th>
+                  <th>性质</th>
+                  <th>学分</th>
+                  <th>学时</th>
+                  <th>信息</th>
+                  {{ if user }}
+                  <th>操作</th>
+                  {{ else }}
+                  <th style="width: 300px"><a href="login">登录后可进行操作</a></th>
+                  {{ /if }}
+                </tr>
+              </thead>
+              <tbody>
+                {{ each courses }}
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ $value.name }}</td>
+                  {{ if $value.character === 0 }}
+                  <td>选修</td>
+                  {{ else }}
+                  <td>必修</td>
+                  {{ /if }}
+                  <td>{{ $value.credit }}</td>
+                  <td>{{ $value.periods }}</td>
+                  <td>{{ $value.info }}</td>
+                  <td>
+                    {{ if user }}
+                    <a href="/students/edit?id={{ $value._id }}">编辑</a>
+                    <a href="/students/delete?id={{ $value._id }}">删除</a>
+                    {{ /if }}
+                  </td>
+                </tr>
+                {{ /each }}
+              </tbody>
+            </table>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+       {{/block}}

@@ -1,0 +1,47 @@
+{{extend './layout/home.html'}}
+
+{{block 'title'}}{{'学生-添加学生'}}{{/block}}
+
+{{block 'content'}}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li id="sidebar-students" class="active"><a href="/students">学生名单</a></li>
+            <li id="sidebar-courses"><a href="/courses">课程名单</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">学生-添加学生</h1>
+          <div class="table-responsive">
+            <form action="/students/new" method="post">
+              <div class="form-group">  
+                <label for="">姓名</label>
+                <input type="text" name="name" class="form-control" id="">
+              </div>
+              <div class="form-group">
+                <label for="">性别</label>
+                  <div>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" value="0"> 男
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" value="1"> 女
+                    </label>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="">年龄</label>
+                <input type="number" id="" name="age" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label for="">专业</label>
+                <input type="text" id="" name="major" class="form-control" >
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{{/block}}

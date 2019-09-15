@@ -1,0 +1,51 @@
+{{extend './layout/home.html'}}
+
+{{block 'title'}}{{'课程-添加课程'}}{{/block}}
+
+{{block 'content'}}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li id="sidebar-students"><a href="/students">学生名单</a></li>
+            <li id="sidebar-courses" class="active"><a href="/courses">课程名单</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">课程-添加课程</h1>
+          <div class="table-responsive">
+            <form action="/courses/new" method="post">
+              <div class="form-group">  
+                <label for="">名称</label>
+                <input type="text" name="name" class="form-control" id="">
+              </div>
+              <div class="form-group">
+                <label for="">性质</label>
+                  <div>
+                    <label class="radio-inline">
+                      <input type="radio" name="character" value="0"> 选修
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="character" value="1"> 必修
+                    </label>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="">学分</label>
+                <input type="number" id="" name="credit" class="form-control" >
+              </div>
+               <div class="form-group">
+                <label for="">学时</label>
+                <input type="number" id="" name="periods" class="form-control" >
+              </div>              
+              <div class="form-group">
+                <label for="">信息</label>
+                <input type="text" id="" name="info" class="form-control" >
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{{/block}}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ block 'title' }}Document{{ /block }}</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+  {{ block 'head' }}{{ /block }}
+</head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/students">学生课程信息管理</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            {{ if user }}
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../../public/img/avatar-default.png" style="height: 18px" alt=""><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/">用户： {{ user.nickname }}</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">其它</li>
+                <li><a href="/setting">账号设置</a></li>
+                <li><a href="/logout">退出</a></li>
+              </ul>
+            </li>
+            {{ else }}
+            <li>
+              <a href="/login">登录</a>
+            </li>
+            <li>
+              <a href="/register">注册</a>
+            </li>
+            {{ /if }}
+            <li><a href="/setting">设置</a></li>
+            <li><a href="/help">帮助</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+          {{ block 'content' }}
+
+          {{ /block }}
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  {{ block 'script' }}{{ /block }}
+  </body>
+</html>
